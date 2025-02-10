@@ -79,7 +79,7 @@ nav {
 	justify-content: center;
 	border: solid 5px var(--secondary-accent-color);
 	width: 75%;
-	height: fit-content;
+	aspect-ratio: 10;
 	/* width: fit-content; */
 	padding: 0.5rem 1rem;
 	border-radius: 4rem;
