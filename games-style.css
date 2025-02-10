@@ -1,0 +1,75 @@
+* {
+	--primary-color: #fbe35d;  /*#aaaa99*/
+	--primary-color-clear: rgba(255, 204, 0, 0);
+	--secondary-color: #eac22b;
+	--shadow-color: #000;
+	--accent-color: #6f86ba;
+	--secondary-accent-color: #2f3940;
+	--gradient-color: #888877;
+	padding: 0;
+	margin: 0;
+	user-select: none;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+	/* background-color: #feeeee; */
+}
+
+.game-display {
+	display: flex;
+	height: 50vh;
+	padding: 2rem;
+	width: 90%;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--secondary-color);
+	/* border: solid 1px var(--primary-color); */
+	border-radius: 2rem;
+	margin: 1rem 0;
+}
+
+.main-display {
+	padding: 4rem 0;
+	/* background-image: none; */
+}
+
+.game-info {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 67%;
+}
+
+.game-display img {
+	height: 100%;
+	width: 33%;
+	border-radius: inherit;
+}
+
+.game-title {
+	font-size: 3rem;
+}
+
+.game-desc {
+	font-size: x-large;
+	padding: 0 2rem;
+}
+
+.info-piece {
+	width: 100%;
+	text-align: center;
+}
+
+.button {
+	width: 50%;
+	margin: 0 2rem;
+	background-color: var(--primary-color);
+	border: solid 5px var(--secondary-color); 
+}
+
+.small-button {
+	width: fit-content;
+}
