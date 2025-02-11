@@ -19,7 +19,7 @@ body {
 .game-display {
 	display: flex;
 	/*height: 50vh;*/
-	aspect-ratio: 2;
+	aspect-ratio: 3;
 	padding: 2rem;
 	width: 90%;
 	justify-content: space-between;
