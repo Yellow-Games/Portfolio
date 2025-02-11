@@ -75,11 +75,16 @@
 
 .desc span {
 	width: 40%;
+	aspect-ratio: calc(1.5 * 40vw);
+	display: flex;
+	align-items: center;
+	/* border: 10px #000 solid; */
 }
 
 .desc div {
 	width: 40vw;
-	height: calc(50vh - 20px);
+	aspect-ratio: 1.5;
+	/* height: calc(50vh - 20px); */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -88,20 +93,21 @@
 
 .desc img {
 	width: 40vw;
-	height: 50vh;
+	aspect-ratio: 1.5;
+	/* height: 50vh; */
 	border-radius: 2rem;
 }
 
 #a1 {
-	border: 10px solid transparent;
+	border: 10px solid gray;
 	transition: border 0.5s;
 }
 #b1 {
-	border: 10px solid transparent;
+	border: 10px solid green;
 	transition: border 0.5s;
 }
 #c1 {
-	border: 10px solid transparent;
+	border: 10px solid blue;
 	transition: border 0.5s;
 }
 
