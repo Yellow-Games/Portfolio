@@ -40,7 +40,7 @@ nav {
 	font-size: 1.5rem;
 	padding: 1rem;
 	border-radius: 0.5rem;
-	width: calc(25vw - 2rem);
+	width: calc(25vw - 2rem - 5px);
 	text-align: center;
 	transition: background-color 0.5s, box-shadow 0.5s;
 }
