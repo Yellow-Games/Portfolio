@@ -12,10 +12,6 @@
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-body {
-	/* background-color: #feeeee; */
-}
-
 .game-display {
 	display: flex;
 	/*height: 50vh;*/
@@ -66,9 +62,19 @@ body {
 
 .button {
 	width: 50%;
-	margin: 0 2rem;
+	margin: 0 calc(2rem);
 	background-color: var(--primary-color);
-	border: solid 5px var(--secondary-color); 
+	border: solid 5px var(--secondary-color);
+	transition: margin 0.5s, scale, 0.5s;
+	transition-delay: 0.1s;
+}
+
+.button:hover {
+	margin: 0 calc(2rem + 6.25%);
+}
+
+.small-button:hover {
+	margin: 0 2rem;
 }
 
 .small-button {
