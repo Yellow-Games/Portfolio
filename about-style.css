@@ -74,6 +74,7 @@
 .desc {
 	display: flex;
 	justify-content: space-evenly;
+	align-items: center;
 	text-align: center;
 	font-size: x-large;
 	padding-bottom: 2rem;
