@@ -5,21 +5,32 @@ class project {
 		this.desc = desc;
 		this.imgPth = imgPth;
 	}
+
+	getTitle() {
+		return this.name;
+	}
+
+	getDesc() {
+		return this.desc;
+	}
+
+	getImgPth() {
+		return this.imgPth;
+	}
 }
 
-let projects = [project("Park Pin","Pin where you park", "supercell.png")];
-let main = document.getElementById("project-wrapper");
 
-function b () {
-	alert(projects);
-	projects.forEach(a);
-}
+let projects = [
+				new project("Park Pin","Pin where you park", "supercell.png"), 
+				new project("Other Project","Some Description", "supercell.png")
+			];
 
-function a (item, index) {
+projects.forEach(createPod);
 
-	alert("Name: ");
-	alert(index);
-	
+function createPod (item, index) {
+
+	let main = document.getElementById("project-wrapper");
+
 	// <div class="pod">
 	// 	<span class="title">Name</span>
 	// 	<img src="supercell.png" alt="Game Image">
@@ -35,18 +46,19 @@ function a (item, index) {
 	const pod = document.createElement("div");
 	
 	const title = document.createElement("span");
-	const titleTxt = document.createTextNode(proj.title);
-	title.appendChild(titleTxt)
+	const titleTxt = document.createTextNode(item.getTitle());
+	title.appendChild(titleTxt);
+	title.classList.add("title");
 
 	const pic = document.createElement("img");
-	const picUrl = document.createTextNode(proj.imgPth);
-	pic.appendChild(picUrl)
+	pic.setAttribute("src", item.getImgPth());
 
 	const body = document.createElement("span");
-	const bodyTxt = document.createTextNode(proj.desc);
+	const bodyTxt = document.createTextNode(item.getDesc());
 	body.appendChild(bodyTxt);
 
 	const buttons = document.createElement("div");
+	buttons.classList.add("button-options");
 
 	const button1 = document.createElement("a");
 	const bText1 = document.createTextNode("Button 1");
@@ -65,4 +77,5 @@ function a (item, index) {
 	pod.appendChild(buttons);
 
 	main.appendChild(pod);
+	// main.appendChild(title);
 }
