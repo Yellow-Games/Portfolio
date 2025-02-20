@@ -1,81 +1,103 @@
 class project {
 
-	constructor (name, desc, imgPth) {
-		this.name = name;
-		this.desc = desc;
-		this.imgPth = imgPth;
-	}
+    constructor(name, desc, imgPth, buttons) {
+        this.name = name;
+        this.desc = desc;
+        this.imgPth = imgPth;
+        this.buttons = buttons;
+    }
 
-	getTitle() {
-		return this.name;
-	}
+    getTitle() {
+        return this.name;
+    }
 
-	getDesc() {
-		return this.desc;
-	}
+    getDesc() {
+        return this.desc;
+    }
 
-	getImgPth() {
-		return this.imgPth;
-	}
+    getImgPth() {
+        return this.imgPth;
+    }
+
+    getButtons() {
+        return this.buttons;
+    }
 }
 
 
 let projects = [
-				new project("Park Pin","Pin where you park", "supercell.png"), 
-				new project("Other Project","Some Description", "supercell.png")
-			];
+    new project("Park Pin", "Pin where you park", "supercell.png", ["download"]),
+    new project("Other Project", "Some Description", "supercell.png", ["download", "steam", "other"])
+];
 
-projects.forEach(createPod);
+// projects.forEach(createPod);
+var index = 0;
 
-function createPod (item, index) {
+createPod(projects[index]);
 
-	let main = document.getElementById("project-wrapper");
+function createPod(item) {
 
-	// <div class="pod">
-	// 	<span class="title">Name</span>
-	// 	<img src="supercell.png" alt="Game Image">
-	// 	<span>Lorem Ipsum</span>
-	// 	<div class="button-options">
-	// 		<a href="#">Steam</a>
-	// 		<a href="#">Download</a>
-	// 		<a href="#">Web</a>
-	// 		<a href="#">Other</a>
-	// 	</div>
-	// </div>
-	
-	const pod = document.createElement("div");
-	
-	const title = document.createElement("span");
-	const titleTxt = document.createTextNode(item.getTitle());
-	title.appendChild(titleTxt);
-	title.classList.add("title");
+    let main = document.getElementById("project-wrapper");
 
-	const pic = document.createElement("img");
-	pic.setAttribute("src", item.getImgPth());
+    // <div class="pod">
+    // 	<span class="title">Name</span>
+    // 	<img src="supercell.png" alt="Game Image">
+    // 	<span>Lorem Ipsum</span>
+    // 	<div class="button-options">
+    // 		<a href="#">Steam</a>
+    // 		<a href="#">Download</a>
+    // 		<a href="#">Web</a>
+    // 		<a href="#">Other</a>
+    // 	</div>
+    // </div>
 
-	const body = document.createElement("span");
-	const bodyTxt = document.createTextNode(item.getDesc());
-	body.appendChild(bodyTxt);
+    const pod = document.createElement("div");
 
-	const buttons = document.createElement("div");
-	buttons.classList.add("button-options");
+    const title = document.createElement("span");
+    const titleTxt = document.createTextNode(item.getTitle());
+    title.appendChild(titleTxt);
+    title.classList.add("title");
 
-	const button1 = document.createElement("a");
-	const bText1 = document.createTextNode("Button 1");
-	button1.appendChild(bText1);
+    const pic = document.createElement("img");
+    pic.setAttribute("src", item.getImgPth());
 
-	const button2 = document.createElement("a");
-	const bText2 = document.createTextNode("Button 2");
-	button2.appendChild(bText2);
+    const body = document.createElement("span");
+    const bodyTxt = document.createTextNode(item.getDesc());
+    body.appendChild(bodyTxt);
 
-	buttons.appendChild(button1);
-	buttons.appendChild(button2);
+    const buttons = document.createElement("div");
+    buttons.classList.add("button-options");
 
-	pod.appendChild(title);
-	pod.appendChild(pic);
-	pod.appendChild(body);
-	pod.appendChild(buttons);
+    let itemButtons = item.getButtons();
 
-	main.appendChild(pod);
-	// main.appendChild(title);
+    for (var i = 0; i < itemButtons.length; i++) {
+        const button = document.createElement("a");
+
+        const bText = document.createTextNode(capFirstLetter(itemButtons[i]))
+
+        button.appendChild(bText);
+
+        buttons.appendChild(button);
+    }
+
+    pod.appendChild(title);
+    pod.appendChild(pic);
+    pod.appendChild(body);
+    pod.appendChild(buttons);
+
+    main.appendChild(pod);
+    // main.appendChild(title);
+}
+
+function capFirstLetter(word) {
+    let letters = word.split("");
+    letters[0] = letters[0].toUpperCase();
+
+    var newString = "";
+
+    for (var j = 0; j < letters.length; j++) {
+        newString += letters[j];
+    }
+
+    return newString;
 }
