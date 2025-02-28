@@ -30,7 +30,6 @@ let projects = [
     new project("Other Project", "Some Description", "supercell.png", ["download", "steam", "other"])
 ];
 
-// projects.forEach(createPod);
 var index = 0;
 
 createPod(projects[index]);
