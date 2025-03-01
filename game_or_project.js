@@ -1,3 +1,8 @@
+let projects = [
+    new project("Park Pin", "Pin where you park", "supercell.png", ["download"]),
+    new project("Survival IO Clone", "A team game project using Spritekit to recreate the mobile game SurvivalIO", "supercell.png", ["github", "app"])
+];
+
 function setIndex(newIndex) {
     localStorage.setItem("linkIndex", newIndex);
     alert(localStorage.getItem("linkIndex"));
@@ -30,10 +35,6 @@ class project {
 }
 
 function loadProjectPage() {
-    let projects = [
-        new project("Park Pin", "Pin where you park", "supercell.png", ["download"]),
-        new project("Other Project", "Some Description", "supercell.png", ["download", "steam", "other"])
-    ];
 
     var index = localStorage.getItem("linkIndex");
 
