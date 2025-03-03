@@ -72,6 +72,7 @@ function loadProjectPage() {
 
         const body = document.createElement("span");
         const bodyTxt = document.createTextNode(item.getDesc());
+        body.classList.add("project-desc");
         body.appendChild(bodyTxt);
 
         const buttons = document.createElement("div");
@@ -88,6 +89,8 @@ function loadProjectPage() {
             button.setAttribute("href", links[i]);
 
             button.appendChild(bText);
+
+            button.classList.add("button");
 
             buttons.appendChild(button);
         }
