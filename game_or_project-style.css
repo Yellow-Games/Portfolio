@@ -23,7 +23,13 @@
 	transition-delay: 0.1s;
 }
 
+img {
+	width: 35vw;
+	aspect-ratio: 1;
+}
+
 .project-desc {
+	height: 35vw;
 	text-align: center;
 	padding: 2rem 0;
 }
