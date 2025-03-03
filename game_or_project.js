@@ -90,8 +90,6 @@ function loadProjectPage() {
 
             button.innerHTML = getButtonIcon(itemButtons[i]);
 
-            button.appendChild(icon);
-
             buttons.appendChild(button);
         }
 
