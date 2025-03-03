@@ -14,6 +14,28 @@
 	align-items: center;
 }
 
+.button {
+	width: 50%;
+	margin: 0 calc(2rem);
+	background-color: var(--primary-color);
+	border: solid 5px var(--secondary-color);
+	transition: margin 0.5s, scale, 0.5s;
+	transition-delay: 0.1s;
+}
+
 .project-desc {
-	background-color: blueviolet;
+	text-align: center;
+	padding: 2rem 0;
+}
+
+.button:hover {
+	margin: 0 calc(2rem + 6.25%);
+}
+
+.small-button:hover {
+	margin: 0 2rem;
+}
+
+.small-button {
+	width: fit-content;
 }
