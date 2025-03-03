@@ -84,16 +84,11 @@ function loadProjectPage() {
         for (var i = 0; i < itemButtons.length; i++) {
             const button = document.createElement("a");
 
-            const bText = document.createTextNode(capFirstLetter(itemButtons[i]))
-
             button.setAttribute("href", links[i]);
-
-            button.appendChild(bText);
 
             button.classList.add("button");
 
-            let icon = document.createElement('svg');
-            icon.innerHTML = getButtonIcon(itemButtons[i]);
+            button.innerHTML = getButtonIcon(itemButtons[i]);
 
             button.appendChild(icon);
 
@@ -122,7 +117,7 @@ function loadProjectPage() {
             case "web":
                 return "";
             default:
-                return "";
+                return capFirstLetter(buttonID);
         }
     }
 
