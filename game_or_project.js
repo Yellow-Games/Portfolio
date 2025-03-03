@@ -35,7 +35,7 @@ class project {
 
 let projects = [
     new project("Park Pin", "Pin where you park", "supercell.png", ["download"], ["#"]),
-    new project("Survival IO Clone", "A team game project using Spritekit to recreate the mobile game SurvivalIO", "supercell.png", ["github", "app"], ["github.com/Yellowguy08/teamGame", "#"])
+    new project("Survival IO Clone", "A team game project using Spritekit to recreate the mobile game SurvivalIO", "supercell.png", ["github", "app"], ["https://www.github.com/Yellowguy08/teamGame", "#"])
 ];
 
 function loadProjectPage() {
