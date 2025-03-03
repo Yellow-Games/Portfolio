@@ -4,11 +4,12 @@ function setIndex(newIndex) {
 
 class project {
 
-    constructor(name, desc, imgPth, buttons) {
+    constructor(name, desc, imgPth, buttons, links) {
         this.name = name;
         this.desc = desc;
         this.imgPth = imgPth;
         this.buttons = buttons;
+        this.links = links;
     }
 
     getTitle() {
@@ -26,11 +27,15 @@ class project {
     getButtons() {
         return this.buttons;
     }
+
+    getLinks() {
+        return this.links;
+    }
 }
 
 let projects = [
-    new project("Park Pin", "Pin where you park", "supercell.png", ["download"]),
-    new project("Survival IO Clone", "A team game project using Spritekit to recreate the mobile game SurvivalIO", "supercell.png", ["github", "app"])
+    new project("Park Pin", "Pin where you park", "supercell.png", ["download"], ["#"]),
+    new project("Survival IO Clone", "A team game project using Spritekit to recreate the mobile game SurvivalIO", "supercell.png", ["github", "app"], ["github.com/Yellowguy08/teamGame", "#"])
 ];
 
 function loadProjectPage() {
@@ -73,11 +78,14 @@ function loadProjectPage() {
         buttons.classList.add("button-options");
 
         let itemButtons = item.getButtons();
+        let links = item.getLinks();
 
         for (var i = 0; i < itemButtons.length; i++) {
             const button = document.createElement("a");
 
             const bText = document.createTextNode(capFirstLetter(itemButtons[i]))
+
+            button.setAttribute("href", links[i]);
 
             button.appendChild(bText);
 
