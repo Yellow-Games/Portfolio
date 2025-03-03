@@ -92,6 +92,11 @@ function loadProjectPage() {
 
             button.classList.add("button");
 
+            let icon = document.createElement('svg');
+            icon.innerHTML = getButtonIcon(itemButtons[i]);
+
+            buttons.appendChild(icon);
+
             buttons.appendChild(button);
         }
 
@@ -102,6 +107,19 @@ function loadProjectPage() {
 
         main.appendChild(pod);
         // main.appendChild(title);
+    }
+
+    function getButtonIcon(buttonID) {
+        switch (buttonID) {
+            case "download":
+                return "";
+            case "github":
+                return "";
+            case "web":
+                return "";
+            default:
+                return "";
+        }
     }
 
     function capFirstLetter(word) {
