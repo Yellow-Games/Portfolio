@@ -31,7 +31,7 @@ img {
 .project-desc {
 	height: 35vw;
 	text-align: center;
-	padding: 2rem 0;
+	padding: 0 2rem;
 }
 
 .button:hover {
