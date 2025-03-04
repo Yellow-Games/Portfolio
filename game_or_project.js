@@ -38,9 +38,12 @@ function loadProjectPage() {
 
     const queryString = window.location.search;
     console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+
+    projectIndx = urlParams.get('project');
     // var index = localStorage.getItem("linkIndex");
 
-    // createPod(projects[project]);
+    createPod(projects[projectIndx]);
 
     function createPod(item) {
 
