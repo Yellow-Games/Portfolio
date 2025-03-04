@@ -31,9 +31,9 @@ class Project {
 
 let projects = [
     new Project("Park Pin", "Pin where you park", "supercell.png", ["download"], ["#"]),
-    new Project("Survival IO Clone", "A team game project using Spritekit to recreate the mobile game SurvivalIO", "supercell.png", ["github", "download"], ["https://www.github.com/Yellowguy08/teamGame", "supercell.png"])
+    new Project("Survival IO Clone", "A team game project using Spritekit to recreate the mobile game SurvivalIO", "supercell.png", ["github", "download"], ["https://www.github.com/Yellowguy08/teamGame", "survivalIO.zip"])
 ];
-    
+
 function loadProjectPage() {
 
     const queryString = window.location.search;
@@ -85,6 +85,10 @@ function loadProjectPage() {
             const button = document.createElement("a");
 
             button.setAttribute("href", links[i]);
+
+            if (itemButtons[i] == "download") {
+                button.setAttribute("download", "");
+            }
 
             button.classList.add("button");
 
