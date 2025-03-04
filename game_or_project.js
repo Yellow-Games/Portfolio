@@ -36,9 +36,11 @@ let projects = [
 
 function loadProjectPage() {
 
+    const queryString = window.location.search;
+    console.log(queryString);
     // var index = localStorage.getItem("linkIndex");
 
-    createPod(projects[project]);
+    // createPod(projects[project]);
 
     function createPod(item) {
 
