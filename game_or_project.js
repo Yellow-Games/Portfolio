@@ -31,13 +31,12 @@ class Project {
 
 let projects = [
     new Project("Park Pin", "Pin where you park", "supercell.png", ["download"], ["#"]),
-    new Project("Survival IO Clone", "A team game project using Spritekit to recreate the mobile game SurvivalIO", "supercell.png", ["github", "app"], ["https://www.github.com/Yellowguy08/teamGame", "#"])
+    new Project("Survival IO Clone", "A team game project using Spritekit to recreate the mobile game SurvivalIO", "supercell.png", ["github", "download"], ["https://www.github.com/Yellowguy08/teamGame", "supercell.png"])
 ];
-
+    
 function loadProjectPage() {
 
     const queryString = window.location.search;
-    console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
 
     projectIndx = urlParams.get('project');
