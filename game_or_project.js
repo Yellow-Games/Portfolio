@@ -67,6 +67,9 @@ function loadProjectPage() {
         title.appendChild(titleTxt);
         title.classList.add("title");
 
+        const mainContainer = document.createElement("div");
+        mainContainer.classList.add("main-container");
+
         const pic = document.createElement("img");
         pic.setAttribute("src", item.getImgPth());
 
@@ -74,6 +77,9 @@ function loadProjectPage() {
         const bodyTxt = document.createTextNode(item.getDesc());
         body.classList.add("project-desc");
         body.appendChild(bodyTxt);
+
+        mainContainer.appendChild(pic);
+        mainContainer.appendChild(body);
 
         const buttons = document.createElement("div");
         buttons.classList.add("button-options");
