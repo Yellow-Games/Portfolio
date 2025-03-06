@@ -70,7 +70,8 @@ function loadProjectPage() {
         const mainContainer = document.createElement("div");
         mainContainer.classList.add("container");
 
-        const textContainer = mainContainer;
+        const textContainer = document.createElement("div");
+        textContainer.classList.add("container");
 
         const pic = document.createElement("img");
         pic.setAttribute("src", item.getImgPth());
