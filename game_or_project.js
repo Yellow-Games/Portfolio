@@ -68,7 +68,9 @@ function loadProjectPage() {
         title.classList.add("title");
 
         const mainContainer = document.createElement("div");
-        mainContainer.classList.add("text-container");
+        mainContainer.classList.add("container");
+
+        const textContainer = mainContainer;
 
         const pic = document.createElement("img");
         pic.setAttribute("src", item.getImgPth());
@@ -78,7 +80,10 @@ function loadProjectPage() {
         body.classList.add("project-desc");
         body.appendChild(bodyTxt);
 
-        mainContainer.appendChild(body);
+        textContainer.appendChild(body);
+
+        mainContainer.appendChild(pic);
+        mainContainer.appendChild(textContainer);
 
         const buttons = document.createElement("div");
         buttons.classList.add("button-options");
@@ -103,7 +108,6 @@ function loadProjectPage() {
         }
 
         pod.appendChild(title);
-        pod.appendChild(pic)
         pod.appendChild(mainContainer);
         pod.appendChild(buttons);
 

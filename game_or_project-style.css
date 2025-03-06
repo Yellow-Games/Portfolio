@@ -46,7 +46,7 @@ img {
 	width: fit-content;
 }
 
-.text-container {
+.container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
