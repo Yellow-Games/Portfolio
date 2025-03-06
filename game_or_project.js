@@ -68,7 +68,7 @@ function loadProjectPage() {
         title.classList.add("title");
 
         const mainContainer = document.createElement("div");
-        mainContainer.classList.add("main-container");
+        mainContainer.classList.add("text-container");
 
         const pic = document.createElement("img");
         pic.setAttribute("src", item.getImgPth());
@@ -78,7 +78,6 @@ function loadProjectPage() {
         body.classList.add("project-desc");
         body.appendChild(bodyTxt);
 
-        mainContainer.appendChild(pic);
         mainContainer.appendChild(body);
 
         const buttons = document.createElement("div");
@@ -104,6 +103,7 @@ function loadProjectPage() {
         }
 
         pod.appendChild(title);
+        pod.appendChild(pic)
         pod.appendChild(mainContainer);
         pod.appendChild(buttons);
 
