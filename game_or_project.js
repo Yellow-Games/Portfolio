@@ -104,8 +104,7 @@ function loadProjectPage() {
         }
 
         pod.appendChild(title);
-        pod.appendChild(pic);
-        pod.appendChild(body);
+        pod.appendChild(mainContainer);
         pod.appendChild(buttons);
 
         main.appendChild(pod);
