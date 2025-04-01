@@ -1,13 +1,13 @@
 .title {
-	font-size: 2rem;
+	font-size: 4rem;
 	width: 100%;
 	text-align: center;
-	padding: 3rem;
+	padding: 3rem 0;
 	display: block;
 }
 
 .button-options {
-	padding: 3rem;
+	padding: 3rem 0;
 	width: 100%;
 	display: flex;
 	justify-content: space-evenly;
@@ -48,7 +48,8 @@ img {
 }
 
 .container {
+	width: 100%;
 	display: flex;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 }

@@ -61,6 +61,7 @@ function loadProjectPage() {
         // </div>
 
         const pod = document.createElement("div");
+        pod.setAttribute("style", "width: 100%;");
 
         const title = document.createElement("span");
         const titleTxt = document.createTextNode(item.getTitle());
@@ -71,7 +72,8 @@ function loadProjectPage() {
         mainContainer.classList.add("container");
 
         const textContainer = document.createElement("div");
-        textContainer.classList.add("container");
+        textContainer.setAttribute("style", "width: 35%;");
+        // textContainer.classList.add("container");
 
         const pic = document.createElement("img");
         pic.setAttribute("src", item.getImgPth());
@@ -79,6 +81,7 @@ function loadProjectPage() {
         const body = document.createElement("span");
         const bodyTxt = document.createTextNode(item.getDesc());
         body.classList.add("project-desc");
+        body.setAttribute("style", "font-size: 2rem;");
         body.appendChild(bodyTxt);
 
         textContainer.appendChild(body);
