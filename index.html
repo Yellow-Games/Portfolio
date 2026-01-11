@@ -2,18 +2,16 @@
 
 <html>
 	<head>
-		<link rel="stylesheet" href="main-style.css">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="styles/main-style.css">
+		<link rel="stylesheet" href="styles/style.css">
+
+		<script defer src="scripts/main.js"></script>
+
 		<title>Yellow Games</title>
 	</head>
 	<body>
-		<nav>
-			<div id="logo-title">Yellow Games</div>
-			<a href="#" id="left-nav-item" class="nav-item">Home</a>
-			<a href="games.html" class="nav-item">Games</a>
-			<a href="about.html" class="nav-item">About</a>
-			<a href="mailto:scottiben08@gmail.com" id="right-nav-item" class="nav-item">Contact</a>
-		</nav>
+		<nav id="nav"></nav>
+
 		<main>
 			<div id="main-display">
 				<div id="top-box"></div>
@@ -21,9 +19,9 @@
 			</div>
 			<div class="main-display">
 				<span class="header">- Latest Games -</span>
-				<div class="game-box"><img src="supercell.png" alt="Supercell"><div class="game-box-info"><span class="header">Egg Takeout</span></div></div>
-				<div class="game-box"><img src="supercell.png" alt="Supercell"><div class="game-box-info"><span class="header">Distracted Dining</span></div></div>
-				<div class="game-box"><img src="supercell.png" alt="Supercell"><div class="game-box-info"><span class="header">Perhe</span></div></div>
+				<div class="game-box"><img src="img/supercell.png" alt="Supercell"><div class="game-box-info"><span class="header">Egg Takeout</span></div></div>
+				<div class="game-box"><img src="img/supercell.png" alt="Supercell"><div class="game-box-info"><span class="header">Distracted Dining</span></div></div>
+				<div class="game-box"><img src="img/supercell.png" alt="Supercell"><div class="game-box-info"><span class="header">Perhe</span></div></div>
 				<span class="header">
 					<a href="games.html" class="button">
 						<svg id='Game_Controller_24' width='96' height='96' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
@@ -42,12 +40,12 @@
 				<span class="header">- News -</span>
 				<div class="article">
 					<div style="left: 0"><span class="news-desc">This is a summary of a news article</span></div>
-					<img src="supercell.png" alt="Article Image">
+					<img src="img/supercell.png" alt="Article Image">
 					<div style="right: 0"><span class="news-title">Title</span></div>
 				</div>
 				<div class="article" style="margin-bottom: 0">
 					<div style="left: 0"><span class="news-desc">This is a another summary of another news article</span></div>
-					<img src="supercell.png" alt="Article Image">
+					<img src="img/supercell.png" alt="Article Image">
 					<div style="right: 0"><span class="news-title">Another Title</span></div>
 				</div>
 
@@ -76,31 +74,7 @@
 
 			</div>
 		</main>
-		<footer>
-			<table>
-				<tr><td></td></tr>
-				<tr>
-					<td><a class="footer-link" href="#">Home</a></td>
-					<td><a class="footer-link" href="main.html">News</a></td>
-					<td><a class="footer-link" href="main.html">C</a></td>
-				</tr>
-				<tr>
-					<td><a class="footer-link" href="games.html">Games</a></td>
-					<td><a class="footer-link" href="main.html">2</a></td>
-					<td><a class="footer-link" href="main.html">3</a></td>
-				</tr>
-				<tr>
-					<td><a class="footer-link" href="about.html">About</a></td>
-					<td><a class="footer-link" href="main.html">ii</a></td>
-					<td><a class="footer-link" href="main.html">Support YG</a></td>
-				</tr>
-				<tr>
-					<td><a class="footer-link" href="mailto:officialyellowgames@gmail.com">Contact</a></td>
-					<td><a class="footer-link" href="main.html">10</a></td>
-					<td><a class="footer-link" href="main.html">11</a></td>
-				</tr>
-				<tr><td></td></tr>
-			</table>
-		</footer>
+
+		<footer id="footer"></footer>
 	</body>
 </html>

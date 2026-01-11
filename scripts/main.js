@@ -1,0 +1,41 @@
+function createFooter() {
+
+    document.getElementById("footer").innerHTML = 
+    `<table>
+        <tr><td></td></tr>
+        <tr>
+            <td><a class="footer-link" href="index.html">Home</a></td>
+            <td><a class="footer-link" href="index.html">News</a></td>
+            <td><a class="footer-link" href="index.html">C</a></td>
+        </tr>
+        <tr>
+            <td><a class="footer-link" href="games.html">Games</a></td>
+            <td><a class="footer-link" href="index.html">2</a></td>
+            <td><a class="footer-link" href="index.html">Support Others</a></td>
+        </tr>
+        <tr>
+            <td><a class="footer-link" href="about.html">About</a></td>
+            <td><a class="footer-link" href="index.html">ii</a></td>
+            <td><a class="footer-link" href="index.html">Support YG</a></td>
+        </tr>
+        <tr>
+            <td><a class="footer-link" href="mailto:scottiben08@gmail.com">Contact</a></td>
+            <td><a class="footer-link" href="index.html">10</a></td>
+            <td><a class="footer-link" href="index.html">11</a></td>
+        </tr>
+        <tr><td></td></tr>
+    </table>`
+
+}
+
+function createNav() {
+    document.getElementById("nav").innerHTML = 
+    `<div id="logo-title">Yellow Games</div>
+	<a href="index.html" id="left-nav-item" class="nav-item">Home</a>
+	<a href="games.html" class="nav-item">Games</a>
+	<a href="about.html" class="nav-item">About</a>
+	<a href="mailto:scottiben08@gmail.com" id="right-nav-item" class="nav-item">Contact</a>`
+}
+
+createNav();
+createFooter();
