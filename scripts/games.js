@@ -32,12 +32,14 @@ class Game {
 
 let games = [
     new Game("Egg Takeout", "desc", "img/supercell.png", ["download"], ["#"]),
-    new Game("Bypass", "desc", "img/supercell.png", ["web"], ["#"]),
+    new Game("Bypass", "", "img/supercell.png", ["web"], ["#"]),
     new Game("Distracted Dining", "desc", "img/supercell.png", ["steam"], ["#"]),
-    new Game("Port & Starboard", "desc", "img/supercell.png", ["github"], ["#"])
+    new Game("Port & Starboard", "", "img/supercell.png", ["github"], ["#"])
 ];
 
 function loadGamesPage() {
+
+    getGameData();
 
     document.getElementById("MainGameDisplay").innerHTML = "";
 
@@ -52,7 +54,7 @@ function createGameModule(game) {
 				<img src="${game.getImgPth()}" alt="Game Image">
 				<div class="game-info">
 					<span class="info-piece game-title">${game.getTitle()}</span>
-					<span class="info-piece game-desc">${game.getDesc()}</span>
+					<span class="info-piece game-desc">${limitCharacters(game.getDesc(), 250)}</span>
 					<a href="g.html?q=${games.indexOf(game)}" class="info-piece button">Learn More -></a>
 					<a href="${game.getLinks()[0]}" class="info-piece button small-button">
 						${getButtonIcon(game.getButtons()[0])}
@@ -119,9 +121,31 @@ function createGamePage() {
 
     game = games[gameIndex]
 
+    document.getElementById("title").innerHTML = game.getTitle();
+
     content = `
-        Hello There.
+        <div>${game.getTitle()}</div>
+        <div>${game.getDesc()}</div>
     `
 
     document.getElementById("GameContent").innerHTML = content;
+}
+
+function limitCharacters(text, limit) {
+
+    if(text.length < limit) {
+        return text;
+    }
+
+    return text.substring(0, limit-3) + "...";
+}
+
+async function getGameData() {
+    try {
+        const response = await fetch("https://yellow-games.github.io/files/data.csv");
+        const data = await response.text();
+        console.log(data);
+    } catch (error) {
+        console.error('Error fetching CSV:', error);
+    }
 }
