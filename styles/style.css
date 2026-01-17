@@ -92,6 +92,12 @@ nav {
 	transition-delay: 0.1s;
 }
 
+#err {
+	height: 100vh;
+	text-align: center;
+	line-height: 50vh;
+}
+
 .button:hover {
 	box-shadow: 0 0 10px var(--shadow-color);
 	z-index: 99;

@@ -146,7 +146,7 @@ body {
 	img {
 		transform: translateX(100%);
 		left: unset;
-		transition-delay: 0.5s;
+		/* transition-delay: 0.5s; */
 	}
 }
 

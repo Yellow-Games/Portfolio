@@ -1,9 +1,9 @@
 class Game {
     
-    constructor(name, desc, imgPth, buttons, links) {
+    constructor(name, desc, imgs, buttons, links) {
         this.name = name;
         this.desc = desc;
-        this.imgPth = imgPth;
+        this.imgs = imgs;
         this.buttons = buttons;
         this.links = links;
     }
@@ -16,8 +16,8 @@ class Game {
         return this.desc;
     }
 
-    getImgPth() {
-        return this.imgPth;
+    getImgs() {
+        return this.imgs;
     }
 
     getButtons() {
@@ -30,35 +30,201 @@ class Game {
 
 }
 
-let games = [
-    new Game("Egg Takeout", "desc", "img/supercell.png", ["download"], ["#"]),
-    new Game("Bypass", "", "img/supercell.png", ["web"], ["#"]),
-    new Game("Distracted Dining", "desc", "img/supercell.png", ["steam"], ["#"]),
-    new Game("Port & Starboard", "", "img/supercell.png", ["github"], ["#"])
-];
+let games = [];
+
+let gameIndex = 0;
 
 function loadGamesPage() {
 
-    getGameData();
+    fetch("../files/data.json").then(function (response) {
+        return response.json();
+    }).then(function (obj) {
 
-    document.getElementById("MainGameDisplay").innerHTML = "";
+        parseData(obj);
 
-    games.forEach(g => {
-        createGameModule(g)
+        document.getElementById("MainGameDisplay").innerHTML = "";
+
+        games.forEach(g => {
+            createGameModule(g)
+        });
+
+    }).catch(function (error) {
+        console.error(error);
+    })
+}
+
+function loadGamePage() {
+
+    fetch("../files/data.json").then(function (response) {
+        return response.json();
+    }).then(function (obj) {
+
+        parseData(obj);
+
+        // Gets game id from url queryString
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        gameIndex = urlParams.get('q');
+
+        let game = games[gameIndex]
+
+        // document.getElementById("title").innerHTML = game.getTitle();
+
+        // if there is only 1 picture don't include arrow buttons and viewer
+        // if there are only 2 pictures double the array to make it still work e.x. a b -> a b a b
+
+        var content = `
+            <div class="header">${game.getTitle()}</div>
+            <div id="image-carousel">
+                <div id="images">`
+
+        if (game.getImgs().length == 2) {
+            game.images = game.getImgs().push(game.getImgs()[0]);
+            game.images = game.getImgs().push(game.getImgs()[1]);
+        }
+
+        if (game.getImgs().length == 1) {
+
+            content += `<img name="0" src="../img/${game.getImgs()[0]}" alt=""></div></div>`
+            
+        } else {
+            for(let i = 0; i < 3; i++) {
+                content += `<img name="${i+1}" src="../img/${game.getImgs()[i]}" alt="">`
+            }
+
+            content += `</div><div id="progress-center"><div id="progress"><div onclick="moveTo(0);" class="dot active"></div>`
+
+        for (let i = 1; i < game.getImgs().length; i++) {
+            content += `<div onclick="moveTo(${i});" class="dot"></div>`
+        }
+
+        content += `</div>
+                </div>
+
+                <div id="left-arrow" class="arrow-center">
+                    <div class="arrow" onclick="arrowPressed('left');"><</div>
+                </div>
+                <div id="right-arrow" class="arrow-center">
+                    <div class="arrow" onclick="arrowPressed('right');">></div>
+                </div>
+
+            </div>
+            </div>`
+        }
+
+            content +=`
+            <div id="desc">${game.getDesc()}</div>
+            <div id="buttons">`;
+
+            for(let i = 0; i < game.buttons.length; i++) {
+                if (i >= game.getLinks().length) {
+                    content += `<button class="button"disabled>${getButtonIcon(game.buttons[i])}</button>`
+                } else {
+                    content += `<button class="button" onclick="location.replace('${game.links[i]}')">${getButtonIcon(game.buttons[i])}</button>`
+                }
+            }
+
+        content += `</div>`;
+
+        document.getElementById("GameContent").innerHTML = content;
+
+    }).catch(function (error) {
+        console.error(error);
+    })
+}
+
+function arrowPressed(direction) {
+
+    let dots = document.getElementById("progress");
+
+    let currIndex = -1;
+
+    for (let i = 0; i < dots.childElementCount; i++) {
+        if (dots.children[i].classList.contains("active")) {
+            currIndex = i;
+            break;
+        }
+    }
+
+    if (currIndex == -1) {
+        return;
+    }
+
+
+    let newIndex = currIndex;
+
+
+    if (direction == 'left') {
+        newIndex = ((currIndex - 1) % dots.childElementCount + dots.childElementCount) % dots.childElementCount;
+        updateImages(-1);
+    } else if (direction == 'right') {
+        newIndex = ((currIndex + 1) % dots.childElementCount + dots.childElementCount) % dots.childElementCount;
+        updateImages(1);
+
+    }
+    dots.children[currIndex].classList.remove("active");
+    dots.children[newIndex].classList.add("active");
+
+}
+
+function moveTo(index) {
+
+    let dots = document.getElementById("progress");
+
+    while (!dots.children[index].classList.contains("active")) {
+        arrowPressed('right');
+    }
+}
+
+function updateImages(direction) {
+
+
+    options = games[gameIndex].getImgs();
+
+    let images = document.getElementById("images");
+
+    if (direction > 0) {
+
+        let img = options.shift()
+        
+        options.push(img);
+
+
+    } else if (direction < 0) {
+
+        let img = options.pop()
+        options.unshift(img);
+
+    }
+
+    games[gameIndex].imgs = options;
+
+    for (let i = 0; i < 3; i++) {
+        images.children[i].src = `../img/${options[i]}`
+    }
+
+    // new system that replaces the order of the imgs.
+    // set thier original position to -x or +x depending on direction and have them slide to 0
+}
+
+function parseData(data) {
+
+    data.content.forEach(g => {
+        games.push(new Game(g.name, g.desc, g.imgs, g.buttons, g.links))
     });
 }
 
 function createGameModule(game) {
 
     module = `<div class="game-display">
-				<img src="${game.getImgPth()}" alt="Game Image">
+				<img src="../img/${game.getImgs()[0]}" alt="Game Image">
 				<div class="game-info">
 					<span class="info-piece game-title">${game.getTitle()}</span>
 					<span class="info-piece game-desc">${limitCharacters(game.getDesc(), 250)}</span>
 					<a href="g.html?q=${games.indexOf(game)}" class="info-piece button">Learn More -></a>
-					<a href="${game.getLinks()[0]}" class="info-piece button small-button">
-						${getButtonIcon(game.getButtons()[0])}
-					</a>
+                    ${game.getLinks().length > 0 ? `<a href="${game.getLinks()[0]}" class="info-piece button small-button"> 
+                    ${getButtonIcon(game.getButtons()[0])}` : ``}
 				</div>
 			</div>`
 
@@ -110,27 +276,6 @@ function capFirstLetter(word) {
     return newString;
 }
 
-// Creates a full page game overview.
-function createGamePage() {
-
-    // Gets game id from url queryString
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-
-    gameIndex = urlParams.get('q');
-
-    game = games[gameIndex]
-
-    document.getElementById("title").innerHTML = game.getTitle();
-
-    content = `
-        <div>${game.getTitle()}</div>
-        <div>${game.getDesc()}</div>
-    `
-
-    document.getElementById("GameContent").innerHTML = content;
-}
-
 function limitCharacters(text, limit) {
 
     if(text.length < limit) {
@@ -138,14 +283,4 @@ function limitCharacters(text, limit) {
     }
 
     return text.substring(0, limit-3) + "...";
-}
-
-async function getGameData() {
-    try {
-        const response = await fetch("https://yellow-games.github.io/files/data.csv");
-        const data = await response.text();
-        console.log(data);
-    } catch (error) {
-        console.error('Error fetching CSV:', error);
-    }
 }
